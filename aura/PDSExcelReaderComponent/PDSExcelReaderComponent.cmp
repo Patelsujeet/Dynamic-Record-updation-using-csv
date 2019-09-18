@@ -1,0 +1,38 @@
+<aura:component implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,lightning:availableForFlowScreens" controller="PDSReader" access="global" >
+	
+    <aura:attribute name="multiple" type="Boolean" default="false"/>
+    <aura:attribute name="disabled" type="Boolean" default="false"/>
+    
+    <aura:attribute name="csvAccept" type="List" default="['.csv']"/>
+    <aura:attribute name="file_disabled" type="boolean"/>
+    
+    <aura:attribute name="excelData" type="String" />
+    <aura:attribute name="pds_record_Id" type="String"/>
+    
+    <aura:attribute name="toast_waiting" type="boolean" />
+    <aura:attribute name="toast_success" type="boolean"/>
+    <aura:attribute name="toast_error" type="boolean"/>
+    <aura:attribute name="error_Message" type="String"/>
+    
+    <aura:if isTrue="{!v.toast_waiting}">
+    	<c:CustomToast toastType="warning" messageName="Please Wait........" />
+        <lightning:spinner alternativeText="Loading" size="medium" />
+    </aura:if>
+    <aura:if isTrue="{!v.toast_success}">
+    	<c:CustomToast toastType="success" messageName="Congrats,Data Has been Successfully loaded!!!!"/>
+    </aura:if>
+    <aura:if isTrue="{!v.toast_error}">
+    	<c:CustomToast toastType="error" messageName="{!v.error_Message}"/>
+    </aura:if>
+       
+    Please Upload CSV File
+    <lightning:input
+                     name="file2"
+                     type="file"
+                     label="Attachment"
+                     multiple="{!v.multiple}" 
+                     accept="{!v.csvAccept}" 
+                     disabled="{!v.file_disabled}" 
+                     onchange="{! c.csvRead }"/>
+    
+</aura:component>
