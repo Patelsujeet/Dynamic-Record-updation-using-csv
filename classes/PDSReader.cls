@@ -1,4 +1,36 @@
 public class PDSReader {
+    /*
+    @AuraEnabled
+    public static String excelData(String d,String pds_recordID){
+        
+        try{
+            String pdsdata=d;
+            List<String> data=d.split('\n');
+            Map<String,String> sheetData=new Map<String,String>();
+            
+            for(String d_obj:data){
+                System.debug('Data'+d_obj);
+                List<String> s=d_obj.split(',');
+                if(s.size()==2){
+                    sheetData.put(s[0].trim(),s[1].trim());
+                }
+                else {
+                    sheetData.put(s[0].trim(),'0');
+                }
+                
+            }
+        	System.debug('+++'+sheetData);
+           PDSReader.getPdsFields(sheetData,pds_recordID);
+           return 'Success';
+        }
+        catch(System.JSONException js){
+            return 'Data Exception';
+        }
+        catch(Exception e){
+        	 return 'Exception';
+        }
+        
+   }*/
     
     @AuraEnabled
     public static String excelData(String d,String pds_recordID){
